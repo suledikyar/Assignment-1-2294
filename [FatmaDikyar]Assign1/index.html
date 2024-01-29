@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>MDIA 2294</title>
+
+	<style>
+		thead {
+			font-weight: bold;
+		}
+
+		td {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+
+		td.sub-total {
+			text-align: right;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>MDIA 2294: ACME Corp Invoice</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<td>ITEM</td>
+				<td>DESCRIPTION</td>
+				<td>QTY</td>
+				<td>PRICE</td>
+				<td>LINE TOTAL</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td><input id="line-1-description" type="text" size="40" value="Anvil" /></td>
+				<td><input id="line-1-quantity" type="text" size="3" value="5" /></td>
+				<td><input id="line-1-price" type="text" size="6" value="35.00" /></td>
+				<td class="sub-total"><span id="line-1"></span></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><input id="line-2-description" type="text" size="40" value="Rocket Skates (each)" /></td>
+				<td><input id="line-2-quantity" type="text" size="3" value="2" /></td>
+				<td><input id="line-2-price" type="text" size="6" value="24.99" /></td>
+				<td class="sub-total"><span id="line-2"></span></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><input id="line-3-description" type="text" size="40" value="Giant Magnet" /></td>
+				<td><input id="line-3-quantity" type="text" size="3" value="1" /></td>
+				<td><input id="line-3-price" type="text" size="6" value="125.50" /></td>
+				<td class="sub-total"><span id="line-3"></span></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><input id="line-4-description" type="text" size="40" value="Ball bearings" /></td>
+				<td><input id="line-4-quantity" type="text" size="3" value="1000" /></td>
+				<td><input id="line-4-price" type="text" size="6" value="0.25" /></td>
+				<td class="sub-total"><span id="line-4"></span></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><input id="line-5-description" type="text" size="40" value="Portable holes" /></td>
+				<td><input id="line-5-quantity" type="text" size="3" value="12" /></td>
+				<td><input id="line-5-price" type="text" size="6" value="15.25" /></td>
+				<td class="sub-total"><span id="line-5"></span></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" style="text-align:right;">SUB TOTAL</td>
+				<td class="sub-total"><span id="sub-total"></span></td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align:right;">DISCOUNT</td>
+				<td class="sub-total"><span id="discount"></span></td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align:right;">TAX</td>
+				<td class="sub-total"><span id="tax"></span></td>
+			</tr>
+			<tr>
+				<td colspan="4" style="text-align:right;">TOTAL</td>
+				<td class="sub-total" style="border-top:solid black 1px"><span id="Total"></span></td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<div><button id="calculate">Calculate</button></div>
+
+	<div>NOTE: discounts of 10% are given to orders over $250</div>
+
+	<script>
+
+		/* Fatma Dikyar - A01355598 Assignment 1
+
+		   Github Link: https://github.com/suledikyar/Assignment-1---Start-Files/tree/f352b0aa9fa9fba31cb1e5c6c5484566ba61ea4c/%5BFatmaDikyar%5DAssign1
+		
+		*/
+
+		/* The reason I'll use the function is that when the user click the button, the calculation is automated by the function.
+
+		 Step 1: Crate a Function (All logics is here such as total, subtotal, discount, grand total and taxes.*/
+
+		function calculate() {
+
+			// Step 3: Retrieve input values (from the user)
+
+
+			/* First Line
+			
+			1- I  select an HTML element with the id "line-1-quantity" which is an input field and getting the value which is the quantity. */
+
+			const quantity1 = document.querySelector("#line-1-quantity").value
+
+			console.log(quantity1);
+
+			// 2- I log the retrived quantity to the console, which for debug or check that the correct value is being retrieved. 
+
+			const price1 = document.querySelector("#line-1-price").value
+
+			// 3- Retrieve the value from an input field.
+
+			console.log(price1);
+
+			// 4- The value which mean price is logged to the console for verification.
+
+			const subTotal1 = quantity1 * price1; 
+
+			// 5- Calculate the subtotal for line-1 by multiplying the quantity by the price.
+
+			console.log(subTotal1);
+
+			// 6- The calculated subtotal1 is logged to the console.
+
+			document.querySelector("#line-1").innerHTML = subTotal1
+
+			// 7- The calculated subtotal1 is displayed in an HTML element with the id=line-1.
+
+			// Second Line
+
+			const quantity2 = document.querySelector("#line-2-quantity").value
+
+			console.log(quantity2);
+
+			const price2 = document.querySelector("#line-2-price").value
+
+			console.log(price2);
+
+			const subTotal2 = quantity2 * price2; 
+
+			console.log(subTotal2);
+
+			document.querySelector("#line-2").innerHTML = subTotal2
+
+			// Third Line
+
+			const quantity3 = document.querySelector("#line-3-quantity").value
+
+			console.log(quantity3);
+
+			const price3 = document.querySelector("#line-3-price").value
+
+			console.log(price3);
+
+			const subTotal3 = quantity3 * price3; 
+
+			console.log(subTotal3);
+
+			document.querySelector("#line-3").innerHTML = subTotal3
+
+			// Fourth Line
+
+			const quantity4 = document.querySelector("#line-4-quantity").value
+
+			console.log(quantity4);
+
+			const price4 = document.querySelector("#line-4-price").value
+
+			console.log(price4);
+
+			const subTotal4 = quantity4 * price4; 
+
+			console.log(subTotal4);
+
+			document.querySelector("#line-4").innerHTML = subTotal4
+
+			// Fifth Line
+
+			const quantity5 = document.querySelector("#line-5-quantity").value
+
+			console.log(quantity5);
+
+			const price5 = document.querySelector("#line-5-price").value
+
+			console.log(price5);
+
+			const subTotal5 = quantity5 * price5; 
+
+			console.log(subTotal5);
+
+			document.querySelector("#line-5").innerHTML = subTotal5
+
+			// Subtotal
+
+			const subTotal = subTotal1 + subTotal2 + subTotal3 + subTotal4 + subTotal5
+
+			document.querySelector("#sub-total").innerHTML = subTotal
+
+			console.log(subTotal);
+
+			/* Discount 
+			
+			1- I used Ternary Operator which mean if the condition is true ("subtotal" is greater than 250), then "discountTotal" is set to subTotal * .1 (which is 10% of "subTotal"). If the condition is false ("subTotal is 250 or less") "discountTotal" is set to 0.
+			
+			2- "toFixed(2)"" converts a number to a string, rounding to 2 decimal places. */
+			
+
+			const discountTotal = (subTotal > 250) ? subTotal * .1 : 0;
+
+			document.querySelector("#discount").innerHTML = "$" + discountTotal.toFixed(2); 
+
+			console.log(discountTotal);
+
+			/* Tax
+
+			1- I only do basic math using variable. It subtracts "discountTotal" from "subtotal" and then multiplies the result by 0.12 */
+
+			const taxRate = (subTotal - discountTotal) * .12 ;
+
+			document.querySelector("#tax").innerHTML = "$" + taxRate.toFixed(2); 
+
+			console.log(taxRate);
+
+			/* Total
+
+			1- I calculate a total price by applying a discount and then adding tax.*/
+
+
+			const totalFinal = (subTotal - discountTotal + taxRate)
+
+			document.querySelector("#Total").innerHTML = "$" + totalFinal.toFixed(2); 
+
+			console.log(totalFinal);
+
+		}
+
+		// Step 2: Add an EventListener (Link the function to a button in HTML. When the button is clicked, the function will be executed.)
+
+
+
+		document.querySelector("#calculate").addEventListener("click", calculate);
+
+
+	</script>
+</body>
+
+</html>
